@@ -38,6 +38,9 @@ class Title(models.Model):
 
     def __str__(self):
         return self.book_title
+    
+    def get_absolute_url(self):
+        return '/success'
 
 class Author(models.Model):
     name = models.CharField(
@@ -51,6 +54,9 @@ class Author(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        return '/success'
 
 class Edition(models.Model):
     number = models.IntegerField(
@@ -61,6 +67,9 @@ class Edition(models.Model):
 
     def __str__(self):
         return 'Edition ' + str(self.number)
+    
+    def get_absolute_url(self):
+        return '/success'
 
 class Genre(models.Model):
     name = models.CharField(
@@ -74,6 +83,9 @@ class Genre(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        return '/success'
 
 class PublishingHouse(models.Model):
     name = models.CharField(
@@ -87,3 +99,6 @@ class PublishingHouse(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        return '/success'

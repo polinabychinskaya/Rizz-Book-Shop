@@ -7,15 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    <table border="1">
-        <tr>
-            <th>Edition</th>
-        </tr>
-        {% for i in object_list %}
-        <tr>
-            <td>{{i.number}}</td>
-        </tr>
-        {% endfor %}
-    </table>
+    <h2>Create a new genre</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create</button>
+    </form>
 </body>
 </html>
