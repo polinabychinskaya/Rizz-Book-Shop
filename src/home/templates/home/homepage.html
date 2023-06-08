@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block HEAD %}
+<style>
+    #button{
+        border-color: #008577;
+    }
+
+    #button:hover{
+        background-color: #008577;
+    }
+
+    #link{
+        text-decoration: none;
+        color: #008577;
+    }
+    
+    #link:hover{
+        color: white;
+    }
+
+    #linkAction{
+        text-decoration: none;
+    }
+</style>
+{% endblock HEAD %}
+{% block TITLE %}Welcome{% endblock TITLE %}
+{% block BODY %}
+<h1>Welcome to the home page!</h1>
+<h2>Please, choose the action below:</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Book Title</th>
+            <th>Description</th>
+            <th>Author</th>
+            <th>Edition</th>
+            <th>Genre</th>
+            <th>Publishing house</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    {% for i in object_list %}
+    <tbody class="table-group-divider">
+        <tr>
+            <td>{{i.book_title}}</td>
+            <td>{{i.description}}</td>
+            <td>{{i.author}}</td>
+            <td>{{i.edition}}</td>
+            <td>{{i.genre}}</td>
+            <td>{{i.publishing_house}}</td>
+            <td>
+                <a id="linkAction" href="{% url 'reference:update-title' pk=i.pk %}">✏️</a>
+                <a id="linkAction" href="{% url 'reference:delete-title' pk=i.pk %}">🗑️</a>
+            </td>
+        </tr>
+    </tbody>
+    {% endfor %}
+</table>
+<br>
+<button id="button" type="button" class="btn btn-outline-warning"><a id="link" href="{% url 'reference:create-title' %}">Add a new book</a></button>
+<br>
+<!--<img src="{% static 'reference/libtech.jpeg' %}" alt="Tech Image">-->
+{% endblock BODY %}

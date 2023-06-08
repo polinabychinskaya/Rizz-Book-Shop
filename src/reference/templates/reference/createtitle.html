@@ -1,17 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h2>Create a new title</h2>
-    <form action="" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Create</button>
-    </form>
-</body>
-</html>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block HEAD %}
+<style>
+.wrapper {
+    text-align: center;
+}
+
+#button {
+    position: absolute;
+    right: 30%;
+    left: 30%;
+    width: 40%;
+    border-color: #008577;
+    color:#008577;
+}
+
+#button:hover{
+    background-color: #008577;
+    color:white;
+}
+</style>
+{% endblock HEAD %}
+{% block TITLE %}Add a new book{% endblock TITLE %}
+{% block BODY %}
+<h2>Add a new book</h2>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <div class="wrapper">
+        <button id="button" type="submit" class="btn btn-outline-warning">Create</button>
+    </div>
+</form>
+<br>
+<br>
+{% endblock BODY %}

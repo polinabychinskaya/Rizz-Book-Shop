@@ -1,31 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <table border="1">
-        <tr>
-            <th>Book Title</th>
-            <th>Description</th>
-            <th>Author</th>
-            <th>Edition</th>
-            <th>Genre</th>
-            <th>Publishing house</th>
-        </tr>
-        {% for i in object_list %}
-        <tr>
-            <td>{{i.book_title}}</td>
-            <td>{{i.description}}</td>
-            <td>{{i.author}}</td>
-            <td>{{i.edition}}</td>
-            <td>{{i.genre}}</td>
-            <td>{{i.publishing_house}}</td>
-        </tr>
-        {% endfor %}
-    </table>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block TITLE %}All titles{% endblock TITLE %}
+{% block BODY %}
+<table border="1">
+    <tr>
+        <th>Book Title</th>
+        <th>Description</th>
+        <th>Author</th>
+        <th>Edition</th>
+        <th>Genre</th>
+        <th>Publishing house</th>
+    </tr>
+    {% for i in object_list %}
+    <tr>
+        <td>{{i.book_title}}</td>
+        <td>{{i.description}}</td>
+        <td>{{i.author}}</td>
+        <td>{{i.edition}}</td>
+        <td>{{i.genre}}</td>
+        <td>{{i.publishing_house}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock BODY %}

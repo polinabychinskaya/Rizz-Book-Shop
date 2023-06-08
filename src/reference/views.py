@@ -5,10 +5,6 @@ from django.views import generic
 
 # Create your views here.
 
-#Homepage
-class HomePage(generic.TemplateView):
-    template_name = 'reference/homepage.html'
-
 #---------GENRES SECTION---------#
 
 #List all genres

@@ -1,21 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <table border="1">
-        <tr>
-            <th>Edition</th>
-        </tr>
-        {% for i in object_list %}
-        <tr>
-            <td>{{i.number}}</td>
-        </tr>
-        {% endfor %}
-    </table>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block TITLE %}All editions{% endblock TITLE %}
+{% block BODY %}
+<table border="1">
+    <tr>
+        <th>Edition</th>
+    </tr>
+    {% for i in object_list %}
+    <tr>
+        <td>{{i.number}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock BODY %}
