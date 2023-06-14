@@ -18,10 +18,18 @@ from django.contrib import admin
 from django.urls import path, include
 from home import views as homeviews
 from reference import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homeviews.HomePage.as_view(), name='home-page'),
     path('reference/', include('reference.urls', namespace='reference')),
-    path('success/', views.success_page, name='success')
-]
+    path('roles/', include('roles.urls', namespace='roles')),
+    path('success/', views.success_page, name='success'),
+    path('edit/', homeviews.EditPage.as_view(), name='edit-page'),
+    path('about/', homeviews.AboutPage.as_view(), name='about-page'),
+    path('profile/', homeviews.ProfilePage.as_view(), name='profile-page')
+] 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

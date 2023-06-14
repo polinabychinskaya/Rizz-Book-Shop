@@ -1,24 +1,39 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block HEAD %}<link href="{% static 'css/productcard.css' %}" rel="stylesheet">
+<style>
+    #shop{
+    background-color: #ebe3d8;
+    height: auto;
+    border-radius: 2.5%;
+    margin: 1.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+</style>
+{% endblock HEAD %}
 {% block TITLE %}All titles{% endblock TITLE %}
 {% block BODY %}
-<table border="1">
-    <tr>
-        <th>Book Title</th>
-        <th>Description</th>
-        <th>Author</th>
-        <th>Edition</th>
-        <th>Genre</th>
-        <th>Publishing house</th>
-    </tr>
-    {% for i in object_list %}
-    <tr>
-        <td>{{i.book_title}}</td>
-        <td>{{i.description}}</td>
-        <td>{{i.author}}</td>
-        <td>{{i.edition}}</td>
-        <td>{{i.genre}}</td>
-        <td>{{i.publishing_house}}</td>
-    </tr>
-    {% endfor %}
-</table>
+<body>
+<div id="shop">
+    <h2 id="shophead">Browse Books</h2>
+    <div class="grid-container">
+        {% for i in object_list %}
+        <div class="card" style="width: 18rem;">
+            <img src="{{ i.picture.url }}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{ i.book_title }}</h5>
+              <p class="card-text">{{ i.author }}</p>
+              <a href="{% url 'reference:detail-title' pk=i.pk %}" id="detail_button" class="btn btn-primary">Learn more!</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <br>
+    <br>
+</div>
+
+
+</body>
 {% endblock BODY %}

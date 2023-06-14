@@ -1,9 +1,48 @@
 {% extends 'base.html' %}
-{% block TITLE %}Delete the edition{% endblock TITLE %}
+{% load crispy_forms_tags %}
+{% block HEAD %}
+<style>
+.wrapper {
+    text-align: center;
+}
+
+#button {
+    position: absolute;
+    right: 30%;
+    left: 30%;
+    width: 40%;
+    border-color: #008577;
+    color:#008577;
+}
+
+#button:hover{
+    background-color: #008577;
+    color:white;
+}
+
+#wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+}
+
+
+</style>
+{% endblock HEAD %}
+{% block TITLE %}Delete the book{% endblock TITLE %}
 {% block BODY %}
-<h2>Delete edition №<b>"{{ object.number }}"</b>?</h2>
+<div id="wrap">
+    <br>
+    <br>
+<h2>Are you sure that you want to delete <b>"{{ object.number }}"</b>?</h2>
 <form action="" method="post">
     {% csrf_token %}
-    <button type="submit">Delete</button>
+    <br>
+    <div class="wrapper">
+        <button id="button" type="submit" class="btn btn-outline-warning">Yes, delete</button>
+    </div>
 </form>
+</div>
 {% endblock BODY %}

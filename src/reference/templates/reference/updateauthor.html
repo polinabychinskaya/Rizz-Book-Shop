@@ -1,10 +1,48 @@
 {% extends 'base.html' %}
-{% block TITLE %}update the author{% endblock TITLE %}
+{% load crispy_forms_tags %}
+{% block HEAD %}
+<style>
+.wrapper {
+    text-align: center;
+}
+
+#button {
+    position: absolute;
+    right: 30%;
+    left: 30%;
+    width: 40%;
+    border-color: #008577;
+    color:#008577;
+}
+
+#button:hover{
+    background-color: #008577;
+    color:white;
+}
+
+#wrap{
+    margin: 4%;
+}
+
+</style>
+{% endblock HEAD %}
+{% block TITLE %}Update the author{% endblock TITLE %}
 {% block BODY %}
-<h2>Update the author</h2>
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Update</button>
-</form>
+<div id="wrap">
+    <br>
+    <br>
+    <br>
+    <h2>Update the book</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="wrapper">
+            <br>
+            <button id="button" type="submit" class="btn btn-outline-warning">Update</button>
+            <br>
+        </div>
+    </form>
+    <br>
+    <br>
+</div>
 {% endblock BODY %}

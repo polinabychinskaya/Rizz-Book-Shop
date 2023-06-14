@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block HEAD %}
+<style>
+    #button{
+    color: #508d96;
+    border-color: #508d96;
+    background-color: white;
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    }
+
+    #button:hover{
+        background-color: #508d96;
+        color: white;
+    }
+    #buttonblock{
+        height: 700px;
+
+    }
+</style>
+{% endblock HEAD %}
+{% block TITLE %}Me{% endblock TITLE %}
+{% block BODY %}
+<div id="buttonblock">
+<a href="{% url 'roles:logout' %}"><button type="button" id="button" class="btn btn-outline-success">Log Out</button></a>
+</div>
+{% endblock BODY %}

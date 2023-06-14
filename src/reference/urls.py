@@ -7,6 +7,7 @@ urlpatterns = [
     path('creategenre/', views.GenreCreateView.as_view(), name='create-genre'),
     path('updategenre/<int:pk>', views.GenreUpdateView.as_view(), name='update-genre'),
     path('deletegenre/<int:pk>', views.GenreDeleteView.as_view(), name='delete-genre'),
+    path('productdetails/<int:pk>', views.TitleDetailView.as_view(), name='detail-title'),
     path('alltitles/', views.TitleListView.as_view(), name='list-title'),
     path('createtitle/', views.TitleCreateView.as_view(), name='create-title'),
     path('updatetitle/<int:pk>', views.TitleUpdateView.as_view(), name='update-title'),

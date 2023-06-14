@@ -1,0 +1,55 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block HEAD %} 
+<style>
+    #wrap{
+        
+        height: 655px;
+        border-radius: 2.5%;
+        margin: 1.5%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    h2{
+        font-size: 200%;
+    }
+
+    #wrapin{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 3%;
+        border-radius: 2.5%;
+        background-color: #f4e9e6;
+        height: 50%;
+    }
+
+</style>
+{% endblock HEAD %} 
+{% block TITLE %}About{% endblock TITLE %} 
+{% block BODY %}
+<div id="wrap">
+    <br>
+    <br>
+    <div id="wrapin">
+    <h2>Welcome to our book shop!</h2>
+    <br>
+    <p style="width: 90%;"> We are a locally owned and operated bookstore 
+        located in the heart of the community. Our mission is to provide our customers 
+        with a wide selection of books that inspire, educate, and entertain. <br>
+        We believe that reading is one of life's greatest pleasures and we are dedicated 
+        to sharing that joy with others. Our shelves are stocked with everything from classic 
+        literature to the latest bestsellers, and our knowledgeable staff is always on hand to 
+        help you find the perfect book for your needs. <br>
+        In addition to our extensive selection of books, we also offer a variety of events and 
+        activities for book lovers of all ages. From author readings and book clubs to children's 
+        story times and writing workshops, there is always something happening at our store. <br>
+    </p>
+    </div>
+    <img src="{% static 'img/review.png' %}">
+</div>
+{% endblock BODY %} 

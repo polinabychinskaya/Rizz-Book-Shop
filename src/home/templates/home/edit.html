@@ -1,0 +1,98 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block HEAD %} 
+<style> 
+    #link{ 
+        text-decoration: none; 
+        color: #008577; 
+    } 
+     
+    #link:hover{ 
+        color: white; 
+    } 
+ 
+    #linkAction{ 
+        text-decoration: none; 
+    } 
+
+    #add_book{
+    color: #508d96;
+    border-color: #508d96;
+    width: 150%;
+    background-color: white;
+  }
+
+  #add_book:hover{
+    color: white;
+    background-color: #508d96;
+}
+
+#wrap{
+    margin: 4%;
+}
+
+#button{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+</style> 
+{% endblock HEAD %} 
+{% block TITLE %}Edit{% endblock TITLE %} 
+{% block BODY %} 
+<br>
+<br>
+<br>
+<div id="wrap">
+<h2><b>Welcome to the edit page!</b></h2> 
+<h3>Please, choose the action below:</h3> 
+<table class="table"> 
+    <thead> 
+        <tr> 
+            <th>Book Title</th> 
+            <th>Description</th> 
+            <th>Author</th> 
+            <th>Edition</th> 
+            <th>Genre</th> 
+            <th>Publishing house</th> 
+            <th>Actions</th> 
+        </tr> 
+    </thead> 
+    {% for i in object_list %} 
+    <tbody class="table-group-divider"> 
+        <tr> 
+            <td>{{i.book_title}}</td> 
+            <td>{{i.description}}</td> 
+            <td>{{i.author}}</td> 
+            <td>{{i.edition}}</td> 
+            <td>{{i.genre}}</td> 
+            <td>{{i.publishing_house}}</td> 
+            <td> 
+                <a id="linkAction" href="{% url 'reference:update-title' pk=i.pk %}">✏️</a> 
+                <a id="linkAction" href="{% url 'reference:delete-title' pk=i.pk %}">🗑️</a> 
+            </td> 
+        </tr> 
+    </tbody> 
+    {% endfor %} 
+</table> 
+<br> 
+<br>
+
+<div id="button">
+<a href="{% url 'reference:create-title' %}"><button type="button" id="add_book" class="btn btn-outline-success">Add a new book &#128161;</button></a>
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="add_book" data-bs-toggle="dropdown" aria-expanded="false">
+      Advanced settings
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="{% url 'reference:list-genre' %}">Genres</a></li>
+      <li><a class="dropdown-item" href="{% url 'reference:list-edition' %}">Editions</a></li>
+      <li><a class="dropdown-item" href="{% url 'reference:list-author' %}">Authors</a></li>
+      <li><a class="dropdown-item" href="{% url 'reference:list-publishing-house' %}">Publishing houses</a></li>
+    </ul>
+  </div>
+</div>
+<br>  
+</div>
+{% endblock BODY %}

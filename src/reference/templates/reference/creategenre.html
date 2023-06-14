@@ -1,10 +1,46 @@
 {% extends 'base.html' %}
-{% block TITLE %}Create a new genre{% endblock TITLE %}
+{% load crispy_forms_tags %}
+{% block HEAD %}
+<style>
+.wrapper {
+    text-align: center;
+}
+
+#button {
+    position: absolute;
+    right: 30%;
+    left: 30%;
+    width: 40%;
+    border-color: #008577;
+    color:#008577;
+}
+
+#button:hover{
+    background-color: #008577;
+    color:white;
+}
+
+#wrap{
+    margin: 4%;
+}
+
+</style>
+{% endblock HEAD %}
+{% block TITLE %}Add a new genre{% endblock TITLE %}
 {% block BODY %}
-<h2>Create a new genre</h2>
-<form action="" method="post">
+<br>
+<br>
+<br>
+<div id="wrap">
+<h2>Add a new genre</h2>
+<form action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Create</button>
+    {{ form|crispy }}
+    <br>
+    <div class="wrapper">
+        <button id="button" type="submit" class="btn btn-outline-warning">Create</button>
+    </div>
 </form>
+<br>
+</div>
 {% endblock BODY %}

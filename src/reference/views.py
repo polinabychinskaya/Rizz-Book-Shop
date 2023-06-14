@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from . import models
 from django.views import generic
 
+
 # Create your views here.
 
 #---------GENRES SECTION---------#
@@ -36,6 +37,11 @@ class GenreDeleteView(generic.DeleteView):
 
 #---------TITLES SECTION---------#
 
+#Book details
+class TitleDetailView(generic.DetailView):
+    model = models.Title
+    template_name='reference/productdetails.html'
+
 #List all titles
 class TitleListView(generic.ListView):
     model = models.Title
@@ -45,7 +51,7 @@ class TitleListView(generic.ListView):
 class TitleCreateView(generic.CreateView):
     model = models.Title
     fields = [
-        'book_title', 'author', 'edition', 'genre', 'publishing_house', 'description'
+        'picture', 'book_title', 'author', 'edition', 'genre', 'publishing_house', 'description'
     ]
     template_name = 'reference/createtitle.html'
 

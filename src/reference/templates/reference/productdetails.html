@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block HEAD %}
+<link href="{% static 'css/productdetails.css' %}" rel="stylesheet">
+{% endblock HEAD %}
+{% block TITLE %}Details{% endblock TITLE %}
+{% block BODY %}
+<div id="wrap_wrap">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="wrap">
+        <div id="pic">
+            <img id="productpic" src="{{ object.picture.url }}" alt="...">
+        </div>
+        <div id="info">
+            <h2 id="infohead">{{object.book_title}}</h2>
+            <p id="infobody"><b>Author:</b> {{object.author}}</p>
+            <p id="infobody"><b>Edition:</b> {{object.edition}}</p>
+            <p id="infobody"><b>Genre:</b> {{object.genre}}</p>
+            <p id="infobody"><b>Publishing house:</b> {{object.publishing_house}}</p>
+        </div>
+    </div>
+    <div id="description">
+        <p><b>Description:</b> {{object.description}}</p>
+    </div>
+    <a href="{% url 'reference:list-title' %}" ><button id="button" type="submit" class="btn btn-outline-warning">Go back</button></a>
+</div>
+{% endblock BODY %}

@@ -1,12 +1,46 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+{% block HEAD %}
+<style>
+.wrapper {
+    text-align: center;
+}
 
-{% block TITLE %}Create a new author{% endblock TITLE %}
+#button {
+    position: absolute;
+    right: 30%;
+    left: 30%;
+    width: 40%;
+    border-color: #008577;
+    color:#008577;
+}
+
+#button:hover{
+    background-color: #008577;
+    color:white;
+}
+
+#wrap{
+    margin: 4%;
+}
+
+</style>
+{% endblock HEAD %}
+{% block TITLE %}Add a new author{% endblock TITLE %}
 {% block BODY %}
-<h2>Create a new author</h2>
-<form action="" method="post">
+<br>
+<br>
+<br>
+<div id="wrap">
+<h2>Add a new genre</h2>
+<form action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form|crispy }}
-    <button type="submit">Create</button>
+    <br>
+    <div class="wrapper">
+        <button id="button" type="submit" class="btn btn-outline-warning">Create</button>
+    </div>
 </form>
+<br>
+</div>
 {% endblock BODY %}

@@ -1,16 +1,69 @@
 {% extends 'base.html' %}
+{% load static %} 
+{% block HEAD %} 
+<style> 
+    #link{ 
+        text-decoration: none; 
+        color: #008577; 
+    } 
+     
+    #link:hover{ 
+        color: white; 
+    } 
+ 
+    #linkAction{ 
+        text-decoration: none; 
+    } 
+
+    #add_book{
+    color: #508d96;
+    border-color: #508d96;
+    width: 40%;
+    background-color: white;
+    position: relative;
+    left: 30%;
+  }
+
+  #add_book:hover{
+    color: white;
+    background-color: #508d96;
+}
+
+#wrap{
+    margin: 4%;
+}
+
+</style> 
+{% endblock HEAD %} 
 {% block TITLE %}All publishing houses{% endblock TITLE %}
 {% block BODY %}
-<table border="1">
-    <tr>
-        <th>Publishing House</th>
-        <th>Country</th>
-    </tr>
-    {% for i in object_list %}
-    <tr>
-        <td>{{i.name}}</td>
-        <td>{{i.country}}</td>
-    </tr>
-    {% endfor %}
+<br>
+<br>
+<br>
+<div id="wrap">
+<table class="table"> 
+    <thead> 
+        <tr> 
+            <th>Publishing House</th>
+            <th>Country</th> 
+            <th>Actions</th> 
+        </tr> 
+    </thead> 
+    {% for i in object_list %} 
+    <tbody class="table-group-divider"> 
+        <tr> 
+            <td>{{i.name}}</td>
+            <td>{{i.country}}</td> 
+            <td> 
+                <a id="linkAction" href="{% url 'reference:update-publishing-house' pk=i.pk %}">✏️</a> 
+                <a id="linkAction" href="{% url 'reference:delete-publishing-house' pk=i.pk %}">🗑️</a> 
+            </td> 
+        </tr> 
+    </tbody> 
+    {% endfor %} 
 </table>
+<br>
+<a href="{% url 'reference:create-publishing-house' %}"><button type="button" id="add_book" class="btn btn-outline-success">Add a new publishing house &#128161;</button></a>
+</div>
 {% endblock BODY %}
+

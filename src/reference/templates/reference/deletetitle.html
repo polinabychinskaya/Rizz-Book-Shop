@@ -19,10 +19,23 @@
     background-color: #008577;
     color:white;
 }
+
+#wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+}
+
+
 </style>
 {% endblock HEAD %}
 {% block TITLE %}Delete the book{% endblock TITLE %}
 {% block BODY %}
+<div id="wrap">
+    <br>
+    <br>
 <h2>Are you sure that you want to delete <b>"{{ object.book_title }}"</b>?</h2>
 <form action="" method="post">
     {% csrf_token %}
@@ -31,4 +44,5 @@
         <button id="button" type="submit" class="btn btn-outline-warning">Yes, delete</button>
     </div>
 </form>
+</div>
 {% endblock BODY %}

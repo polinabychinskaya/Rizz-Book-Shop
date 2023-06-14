@@ -4,24 +4,43 @@
 <style>
     #button{
         border-color: #008577;
+        color:#008577;
     }
 
     #button:hover{
         background-color: #008577;
-    }
-
-    #link{
-        text-decoration: none;
-        color: #008577;
+        color:white
     }
     
-    #link:hover{
-        color: white;
-    }
+#wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 650px;
+}
+
+#wrapout{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items:center;
+}
+
 </style>
 {% endblock HEAD %}
 {% block TITLE %}Success{% endblock TITLE %}
 {% block BODY %}
-<h2>Congratulations! The operation succeeded!</h2>
-<button id="button" type="button" class="btn btn-outline-warning"><a id="link" href="{% url 'home-page' %}">Go back to the home page</a></button>
+<br>
+<br>
+<div id="wrapout">
+<div id="wrap">
+    <h2>Congratulations! The operation succeeded!</h2>
+    <br>
+    <a id="link" href="{% url 'edit-page' %}"><button id="button" type="button" class="btn btn-outline-warning">Go back to the edit page</button></a>
+</div>
+<div>
+    <img src="{% static 'img/fix.png' %}">
+</div>
+</div>
 {% endblock BODY %}

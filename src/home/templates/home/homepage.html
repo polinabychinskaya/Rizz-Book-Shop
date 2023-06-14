@@ -1,64 +1,77 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block HEAD %}
+<link href="{% static 'css/homepage.css' %}" rel="stylesheet">
 <style>
-    #button{
-        border-color: #008577;
-    }
-
-    #button:hover{
-        background-color: #008577;
-    }
-
-    #link{
-        text-decoration: none;
-        color: #008577;
-    }
-    
-    #link:hover{
-        color: white;
-    }
-
-    #linkAction{
-        text-decoration: none;
-    }
+    #fairbutton{
+    color: #508d96;
+    border-color: #508d96;
+    width: 70%;
+    position: relative;
+    left: 10%;
+    top: 7%;
+}
 </style>
 {% endblock HEAD %}
 {% block TITLE %}Welcome{% endblock TITLE %}
 {% block BODY %}
-<h1>Welcome to the home page!</h1>
-<h2>Please, choose the action below:</h2>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Book Title</th>
-            <th>Description</th>
-            <th>Author</th>
-            <th>Edition</th>
-            <th>Genre</th>
-            <th>Publishing house</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    {% for i in object_list %}
-    <tbody class="table-group-divider">
-        <tr>
-            <td>{{i.book_title}}</td>
-            <td>{{i.description}}</td>
-            <td>{{i.author}}</td>
-            <td>{{i.edition}}</td>
-            <td>{{i.genre}}</td>
-            <td>{{i.publishing_house}}</td>
-            <td>
-                <a id="linkAction" href="{% url 'reference:update-title' pk=i.pk %}">✏️</a>
-                <a id="linkAction" href="{% url 'reference:delete-title' pk=i.pk %}">🗑️</a>
-            </td>
-        </tr>
-    </tbody>
-    {% endfor %}
-</table>
-<br>
-<button id="button" type="button" class="btn btn-outline-warning"><a id="link" href="{% url 'reference:create-title' %}">Add a new book</a></button>
-<br>
-<!--<img src="{% static 'reference/libtech.jpeg' %}" alt="Tech Image">-->
+<body>
+    <div class="home">
+        <div id="lefthome">
+            <img id="startiny" src="{% static 'img/startiny.png' %}">
+            <img id="star" src="{% static 'img/star.png' %}">
+            <div id="hometext">
+                <h1 id="homehead">What Book<br>Are You<br>Looking For</h1>
+                <p id="headtext">Not sure what to read next? Explore our catalog!</p>
+            </div>
+            <div id="yellowbook">
+                <img id="book" src="{% static 'img/book.png' %}">
+            </div>
+            <a href="{% url 'reference:list-title' %}"><button type="button" id="homebutton" class="btn btn-outline-success">Explore now!</button></a>
+        </div>
+        <div id="righthome">
+            <img id="homeimg" src="{% static 'img/myhome.png' %}">
+            <img id="startinyimg" src="{% static 'img/startiny.png' %}">
+        </div>
+    </div>
+    <div class="fair">
+        <div id="fairtext">
+            <h2 id="fairhead">Online Book<br>Fairs 2023</h2>
+            <p id="fairpar">Our authors are passionate about their work<br> 
+                and want to tell you more about their books and ideas!</p>
+            <a href="{% url 'roles:login' %}"><button type="button" id="fairbutton" class="btn btn-outline-success">Create account or log in&#10084;</button></a>
+        </div>
+        <div><img id="fairimg" src="{% static 'img/dinofair.jpg' %}"></div>
+    </div>
+    <div class="testimonails">
+        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+            <div id="mycarousel" class="carousel-inner">
+              <div class="carousel-item active">
+                <div id="testcard">
+                    <div id="testphoto"><img id="homeimg" src="{% static 'img/woman.png' %}"></div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div id="testcard">
+                    <div id="testphoto"><img id="homeimg" src="{% static 'img/man.png' %}"></div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div id="testcard">
+                    <div id="testphoto"><img id="homeimg" src="{% static 'img/girl.png' %}"></div>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+    </div>
+</body>
 {% endblock BODY %}
+

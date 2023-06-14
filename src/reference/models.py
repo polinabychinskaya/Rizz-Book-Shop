@@ -3,6 +3,11 @@ from django.db import models
 # Create your models here.
 
 class Title(models.Model):
+    picture = models.ImageField(
+        verbose_name='Book picture',
+        upload_to='uploads/%Y/%m/%d/'
+    )
+
     author = models.ForeignKey(
         'reference.Author',
         on_delete=models.PROTECT,
