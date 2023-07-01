@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block HEAD %}
+<style>
+    #quantity_wrap{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-left: -40%;
+        margin-right: 40%;
+    }
+
+    #changeqmax{
+        color: #508d96;
+        border-color: #508d96;
+        margin-right: 20%;
+    }
+    #changeqmin{
+      color: #508d96;
+        border-color: #508d96;
+        margin-left: 20%;
+    }
+    #changeqmax:hover{
+        color: white;
+        background-color: #508d96;
+    }
+
+    #changeqmin:hover{
+        color: white;
+        background-color: #508d96;
+    }
+    #wrap{
+        margin: 4%;
+    }
+
+    #button{
+        border-color: #508d96;
+        color:#508d96;
+        width: 20%;
+        position: relative;
+        left: 40%;
+    }
+
+    #button:hover{
+        background-color: #508d96;
+        color:white
+    }
+
+    #wrap{
+        margin: 4%;
+    }
+
+    @media screen and (max-width: 480px){
+      #button{
+        border-color: #508d96;
+        color:#508d96;
+        width: 40%;
+        position: relative;
+        left: 30%;
+    }
+    }
+</style>
+{% endblock HEAD %}
+{% block TITLE %}Create order{% endblock TITLE %}
+{% block BODY %}
+<br>
+<br>
+<br>
+<div id="wrap">
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Book title</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+    {% for item_in_cart in object.items.all %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ item_in_cart.item.book_title }}</td>
+        <td>{{ item_in_cart.quantity }}</td>
+        <td>{{ item_in_cart.price }}</td>
+      </tr>
+    {% endfor %}
+      <tr>
+        <td colspan="3"><b>Total:</b></td>
+        <td id="total" colspan="1">{{ object.total_price }}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <div id="wrap">
+  <form action="" method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <br>
+    <button id="button" type="submit" class="btn btn-outline-warning">Create!</button>
+  </form>
+</div>
+{% endblock BODY %}

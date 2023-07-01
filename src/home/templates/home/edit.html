@@ -37,6 +37,11 @@
     justify-content: space-around;
     align-items: center;
 }
+@media screen and (max-width: 480px){
+    .dropdown{
+        margin-right: -30%;
+    }
+}
 </style> 
 {% endblock HEAD %} 
 {% block TITLE %}Edit{% endblock TITLE %} 
@@ -50,7 +55,8 @@
 <table class="table"> 
     <thead> 
         <tr> 
-            <th>Book Title</th> 
+            <th>Book Title</th>  
+            <th>Price</th> 
             <th>Description</th> 
             <th>Author</th> 
             <th>Edition</th> 
@@ -63,6 +69,7 @@
     <tbody class="table-group-divider"> 
         <tr> 
             <td>{{i.book_title}}</td> 
+            <td>{{i.price}}</td> 
             <td>{{i.description}}</td> 
             <td>{{i.author}}</td> 
             <td>{{i.edition}}</td> 

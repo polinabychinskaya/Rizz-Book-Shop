@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block HEAD %}
+<style>
+#linkAction{ 
+        text-decoration: none; 
+    } 
+
+
+#wrapout{
+    margin: 4%;
+    margin-right: 10%;
+}
+#order_card{
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        width: 130%;
+        height: 300px;
+        border-radius: 5%;
+        margin-top: 8%;
+
+}
+
+   #order_card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  #details{
+    margin-left: 4%;
+    font-size: 130%;
+    font-weight:400;
+    color:#508d96;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-around;
+  }
+  p{
+    margin-left: 4%;
+  }
+  @media screen and (max-width: 480px){
+    .grid-container {
+    display: grid;
+    grid-template-columns: auto;
+    justify-content: space-around;
+  }
+  #order_card{
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        width: 107%;
+        height: 300px;
+        border-radius: 5%;
+        margin-top: 8%;
+
+}
+  }
+</style>
+{% endblock HEAD %}
+{% block TITLE %}Orders{% endblock TITLE %}
+{% block BODY %}
+<br>
+
+<br>
+<div id="wrapout">
+    <div class="grid-container">
+        {% for i in orders %}
+        <div id="order_card">
+            <br> 
+            <p id="details">Your order:</p>
+            <p>Phone number: {{i.phone}}</p>
+            <p>Address: {{i.address}}</p>
+            <p>Status: {{i.status}}</p>
+            <p>Payment method: {{i.payment_method}}</p>
+        </div> 
+        {% endfor %}
+    </div>
+</div>
+{% endblock BODY %}

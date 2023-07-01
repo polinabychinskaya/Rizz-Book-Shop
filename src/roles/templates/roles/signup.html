@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block HEAD %}
+<style>
+#button{
+        border-color: #508d96;
+        color:#508d96;
+        margin-top: 20px;
+        margin-left: 20%;
+        width: 60%;
+    }
+
+#button:hover{
+        background-color: #508d96;
+        color:white
+    }
+
+#wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 630px;
+}
+</style>
+{% endblock HEAD %}
+{% block TITLE %}{% endblock TITLE %}
+{% block BODY %}
+<br>
+<br>
+<br>
+<div id="wrap">
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <br>
+    <input id="button" class="btn btn-outline-warning" type="submit" value="Register">
+</form>
+</div>
+{% endblock BODY %}

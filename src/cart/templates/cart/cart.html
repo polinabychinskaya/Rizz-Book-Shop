@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block HEAD %}
+<style>
+    #quantity_wrap{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-left: -40%;
+        margin-right: 40%;
+    }
+
+    #changeqmax{
+        color: #508d96;
+        border-color: #508d96;
+        margin-right: 20%;
+    }
+    #changeqmin{
+      color: #508d96;
+        border-color: #508d96;
+        margin-left: 20%;
+    }
+    #changeqmax:hover{
+        color: white;
+        background-color: #508d96;
+    }
+
+    #changeqmin:hover{
+        color: white;
+        background-color: #508d96;
+    }
+    #wrap{
+        margin: 4%;
+    }
+
+    #button{
+        border-color: #508d96;
+        color:#508d96;
+        width: 20%;
+        position: relative;
+        left: 40%;
+    }
+
+    #button:hover{
+        background-color: #508d96;
+        color:white
+    }
+    @media screen and (max-width: 480px){
+      #button{
+        border-color: #508d96;
+        color:#508d96;
+        width: 40%;
+        position: relative;
+        left: 27%;
+    }
+    }
+</style>
+{% endblock HEAD %}
+{% block TITLE %}My cart{% endblock TITLE %}
+{% block BODY %}
+<br>
+<br>
+<br>
+<div id="wrap">
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Book title</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+    {% for item_in_cart in object.items.all %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ item_in_cart.item.book_title }}</td>
+        <td><div id="quantity_wrap"><button type="button" onclick="deleteItem({{ item_in_cart.item.pk }})" id="changeqmin" class="btn btn-outline-success">&minus;</button>{{ item_in_cart.quantity }}<button type="button" id="changeqmax" onclick="addItem({{ item_in_cart.item.pk }})" class="btn btn-outline-success">+</button></div></td>
+        <td>{{ item_in_cart.price }}</td>
+      </tr>
+    {% endfor %}
+      <tr>
+        <td colspan="3"><b>Total:</b></td>
+        <td id="total" colspan="1">{{ object.total_price }}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  {% if object.items.all %}
+  <a id="link" href="{% url 'cart:create-order' %}"><button id="button" type="button" class="btn btn-outline-warning">Order now!</button></a>
+  {% endif %}
+  <br>
+  <br>
+  <br>
+  <script>
+
+    function addItem(pk){
+        redirect('add', pk)
+    }
+    function deleteItem(pk){
+        redirect('delete', pk)
+    }
+    function redirect(action, pk){
+        window.location.href = "{% url 'cart:edit-item' %}" + `?action=${action}&item=${pk}`;
+    }
+  </script>
+{% endblock BODY %}

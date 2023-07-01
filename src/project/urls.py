@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from home import views as homeviews
-from reference import views
+from reference import views 
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -26,6 +26,7 @@ urlpatterns = [
     path('', homeviews.HomePage.as_view(), name='home-page'),
     path('reference/', include('reference.urls', namespace='reference')),
     path('roles/', include('roles.urls', namespace='roles')),
+    path('cart/', include('cart.urls', namespace='cart')),
     path('success/', views.success_page, name='success'),
     path('edit/', homeviews.EditPage.as_view(), name='edit-page'),
     path('about/', homeviews.AboutPage.as_view(), name='about-page'),

@@ -8,6 +8,12 @@ class Title(models.Model):
         upload_to='uploads/%Y/%m/%d/'
     )
 
+    price = models.DecimalField(
+        verbose_name='Price',
+        max_digits=6,
+        decimal_places=2
+    )
+
     author = models.ForeignKey(
         'reference.Author',
         on_delete=models.PROTECT,

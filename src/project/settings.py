@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 from . import local_settings
+from . local_settings import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,7 +29,6 @@ DEBUG = local_settings.DEBUG
 
 ALLOWED_HOSTS = local_settings.ALLOWED_HOSTS
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'reference',
     'home',
     'roles',
+    'cart',
     'crispy_forms',
     'crispy_bootstrap5'
 ]

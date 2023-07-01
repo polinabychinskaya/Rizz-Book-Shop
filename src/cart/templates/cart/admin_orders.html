@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block HEAD %}
+<style>
+#linkAction{ 
+        text-decoration: none; 
+    } 
+#wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 650px;
+}
+
+#wrapout{
+    margin: 4%;
+}
+
+</style>
+{% endblock HEAD %}
+{% block TITLE %}Orders{% endblock TITLE %}
+{% block BODY %}
+<br>
+<br>
+<div id="wrapout">
+    <table class="table"> 
+        <thead> 
+            <tr> 
+                <th>Phone number</th> 
+                <th>Address</th> 
+                <th>Status</th> 
+                <th>Payment method</th> 
+                <th>Created</th> 
+                <th>Last modified</th> 
+                <th>Actions</th>
+            </tr> 
+        </thead> 
+        {% for i in object_list %} 
+        <tbody class="table-group-divider"> 
+            <tr> 
+                <td>{{i.phone}}</td> 
+                <td>{{i.address}}</td> 
+                <td>{{i.status}}</td> 
+                <td>{{i.payment_method}}</td> 
+                <td>{{i.created}}</td> 
+                <td>{{i.updated}}</td> 
+                <td> 
+                    <a id="linkAction" href="{% url 'cart:admin_orders_update' pk=i.pk %}">✏️</a> 
+                    <a id="linkAction" href="{% url 'cart:admin_orders_delete' pk=i.pk %}">🗑️</a> 
+                </td> 
+            </tr> 
+        </tbody> 
+        {% endfor %} 
+    </table>
+</div>
+{% endblock BODY %}

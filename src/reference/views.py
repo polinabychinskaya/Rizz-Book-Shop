@@ -51,7 +51,7 @@ class TitleListView(generic.ListView):
 class TitleCreateView(generic.CreateView):
     model = models.Title
     fields = [
-        'picture', 'book_title', 'author', 'edition', 'genre', 'publishing_house', 'description'
+        'picture', 'book_title', 'price', 'author', 'edition', 'genre', 'publishing_house', 'description'
     ]
     template_name = 'reference/createtitle.html'
 
@@ -59,7 +59,7 @@ class TitleCreateView(generic.CreateView):
 class TitleUpdateView(generic.UpdateView):
     model = models.Title
     fields = [
-        'book_title', 'author', 'edition', 'genre', 'publishing_house', 'description'
+        'book_title', 'price', 'author', 'edition', 'genre', 'publishing_house', 'description'
     ]
     template_name = 'reference/updatetitle.html'
 

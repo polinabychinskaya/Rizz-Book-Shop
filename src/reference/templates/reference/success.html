@@ -3,12 +3,12 @@
 {% block HEAD %}
 <style>
     #button{
-        border-color: #008577;
-        color:#008577;
+        border-color: #508d96;
+        color:#508d96;
     }
 
     #button:hover{
-        background-color: #008577;
+        background-color: #508d96;
         color:white
     }
     
@@ -37,7 +37,7 @@
 <div id="wrap">
     <h2>Congratulations! The operation succeeded!</h2>
     <br>
-    <a id="link" href="{% url 'edit-page' %}"><button id="button" type="button" class="btn btn-outline-warning">Go back to the edit page</button></a>
+    <a id="link" href="{% url 'home-page' %}"><button id="button" type="button" class="btn btn-outline-warning">Go back to the home page</button></a>
 </div>
 <div>
     <img src="{% static 'img/fix.png' %}">

@@ -2,6 +2,106 @@
 {% load static %}
 {% block HEAD %}
 <link href="{% static 'css/productdetails.css' %}" rel="stylesheet">
+<style>
+    #button {
+    width: 100%;
+    border-color: #508d96;
+    color:#508d96;
+    margin-left: 28.5%;
+}
+
+#button:hover{
+    background-color: #508d96;
+    color:white;
+}
+
+#wrap_wrap{
+    display: flex;
+    flex-direction: column;
+    margin: 1.5%;
+    height: auto;
+    border-radius: 2.5%;
+    background-color: #d8d4dcf2;
+}
+
+#countLabel{
+    display: block;
+    text-align: center;
+    font-size: 20px;
+}
+
+#wrapcounter{
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+    margin-left: 25%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+}
+
+#decreaseBtn{
+    margin-left: 4%;
+    border-color: #508d96;
+    color:#508d96;
+}
+
+#decreaseBtn:hover{
+    background-color: #508d96;
+    color:white;
+}
+
+#countLabel{
+    margin-left: 4%;
+}
+
+#increaseBtn{
+    margin-left: 4%;
+    border-color: #508d96;
+    color:#508d96;
+}
+
+#increaseBtn:hover{
+    background-color: #508d96;
+    color:white;
+}
+@media screen and (max-width: 480px){
+    #wrap_wrap{
+    display: flex;
+    flex-direction: column;
+    margin: 1.5%;
+    justify-content: center;
+    height: auto;
+    border-radius: 0%;
+    background-color: #d8d4dcf2;
+    padding-bottom: 20%;
+}
+#wrap{
+    display: flex;
+    flex-direction: column;
+    margin-left: 3%;
+    margin-top: -10%;
+}
+#button {
+    width: 80%;
+    border-color: #508d96;
+    color:#508d96;
+    
+}
+#wrapcounter{
+    display: flex;
+    flex-direction: row;
+    width: 120%;
+    margin-left: -28%;
+    margin-top: 5%;
+    margin-bottom: 1%;
+}
+#countLabel{
+    font-size: 20px;
+    width: 20%;
+    height:25%;
+}
+}
+</style>
 {% endblock HEAD %}
 {% block TITLE %}Details{% endblock TITLE %}
 {% block BODY %}
@@ -27,6 +127,25 @@
     <div id="description">
         <p><b>Description:</b> {{object.description}}</p>
     </div>
-    <a href="{% url 'reference:list-title' %}" ><button id="button" type="submit" class="btn btn-outline-warning">Go back</button></a>
+        <div id="wrapcounter">
+        <button id="button" type="button" class="btn btn-outline-warning" onclick="addToCart()">Add to cart</button>
+            <input placeholder="0" type="number" id="countLabel" min="1" class="form-control" aria-labelledby="passwordHelpInline">
+        </div>
 </div>
+{% if user.is_authenticated %}
+<script>
+    function addToCart(){
+        quantity = document.getElementById('countLabel');
+        console.log(quantity.value);
+        window.location.replace(`{% url "cart:view-cart" %}?item_id={{ object.pk }}&quantity=${quantity.value}`)
+    }
+</script>
+{% endif %}
+{% if not user.is_authenticated %}
+<script>
+    function addToCart(){
+        window.location.replace(`{% url "roles:login" %}`)
+    }
+</script>
+{% endif %}
 {% endblock BODY %}
