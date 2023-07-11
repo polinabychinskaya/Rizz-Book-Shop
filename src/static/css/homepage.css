@@ -58,19 +58,7 @@
 }
 
 
-#homebutton{
-    color: #508d96;
-    border-color: #508d96;
-    width: 30%;
-    position: relative;
-    top: 17%;
-    left: 18%;
-}
 
-#homebutton:hover{
-    color: white;
-    background-color: #508d96;
-}
 
 #testcard{
     display: flex;

@@ -115,26 +115,29 @@ class CreateOrder(FormView):
         cart = get_object_or_404(
             models.Cart,
             pk=cart_pk
-        )
+        ) 
+        item = str(models.ItemsInCart.objects.all().filter(cart=cart))
+        item = item.replace('<QuerySet [', '').replace('<ItemsInCart:', '').replace('>', '').replace(']', '')
         models.Order.objects.create(
             user = user,
             phone=phone,
             payment_method=payment_method,
             address=address,
             status=status,
-            cart=cart
+            cart=cart,
+            item=item
         )
         del self.request.session['cart_id']
         return super().form_valid(form)
     
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        cart_id = self.request.session.get('cart_id', -100)
-        context['object'] = get_object_or_404(
-            models.Cart,
-            pk=int(cart_id)
-        )
-        return context
+            context = super().get_context_data(**kwargs)
+            cart_id = self.request.session.get('cart_id', -100)
+            context['object'] = get_object_or_404(
+                models.Cart,
+                pk=int(cart_id)
+            )
+            return context
     
 class OrderListView(LoginRequiredMixin, ListView):
     model = models.Order

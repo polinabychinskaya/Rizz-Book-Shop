@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'home',
     'roles',
     'cart',
+    'search',
     'crispy_forms',
     'crispy_bootstrap5'
 ]

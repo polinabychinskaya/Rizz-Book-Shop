@@ -86,9 +86,13 @@ class Order(models.Model):
         null=False,
         blank=False
     )
-
+    
     address = models.TextField(
         verbose_name='Delivery address'
+    )
+
+    item = models.TextField(
+        verbose_name='Item'
     )
 
     status = models.ForeignKey(
@@ -124,3 +128,6 @@ class Order(models.Model):
 
     def get_absolute_url(self):
         return '/success'
+    
+    def get_search_url(self):
+        return f'/cart/adminordersedit/{self.pk}'

@@ -17,13 +17,23 @@
     margin: 4%;
 }
 
+h3{
+    margin-left: 45%;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
 </style>
 {% endblock HEAD %}
 {% block TITLE %}Orders{% endblock TITLE %}
 {% block BODY %}
 <br>
 <br>
+<br>
 <div id="wrapout">
+    <a href="{% url 'search:search' %}"><h3>Look up &#128269;</h3></a>
+    <br>
     <table class="table"> 
         <thead> 
             <tr> 
@@ -43,6 +53,7 @@
                 <td>{{i.address}}</td> 
                 <td>{{i.status}}</td> 
                 <td>{{i.payment_method}}</td> 
+                <td>Items: {{i.item}}</td>
                 <td>{{i.created}}</td> 
                 <td>{{i.updated}}</td> 
                 <td> 

@@ -27,6 +27,7 @@ urlpatterns = [
     path('reference/', include('reference.urls', namespace='reference')),
     path('roles/', include('roles.urls', namespace='roles')),
     path('cart/', include('cart.urls', namespace='cart')),
+    path('search/', include('search.urls', namespace='search')),
     path('success/', views.success_page, name='success'),
     path('edit/', homeviews.EditPage.as_view(), name='edit-page'),
     path('about/', homeviews.AboutPage.as_view(), name='about-page'),

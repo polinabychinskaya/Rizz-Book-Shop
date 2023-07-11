@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block HEAD %}
+<style>
+#linkAction{ 
+        text-decoration: none; 
+    } 
+#wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 650px;
+}
+
+#wrapout{
+    margin: 4%;
+}
+#inputgr{
+    display: flex;
+    flex-direction: row;
+}
+button{
+    margin-left: 2%;
+    margin-right: 20%;
+    border-color:#508d96!important;
+    color:#508d96!important;
+    background-color: white!important;
+}
+button:hover{
+    background-color:#508d96!important;
+    color:white!important;
+    
+}
+a{
+    text-decoration: none;
+    color:#508d96;
+}
+</style>
+{% endblock HEAD %}
+{% block TITLE %}Search results{% endblock TITLE %}
+{% block BODY %}
+<br>
+<br>
+<br>
+<div id="wrapout">
+    <form action="" method="post">
+        {% csrf_token %}
+        <div id="inputgr">
+        <input placeholder="Enter your request" class="form-control" type="text" name="q" value="{{ q }}" id="">
+        <button class="btn btn-success" type="submit" >Search</button>
+        </div>
+    </form>
+    <br>
+    <h3>Search results:</h3> 
+    <table class="table"> 
+        <thead> 
+            <tr> 
+                <th>Result</th> 
+                <th>Details</th> 
+            </tr> 
+        </thead> 
+        {% for i in results %} 
+        <tbody class="table-group-divider"> 
+            <tr> 
+                <td>{{i.0}}</td> 
+                <td><a href="{{i.1}}">See more</a></td> 
+                 
+            </tr> 
+        </tbody> 
+        {% endfor %} 
+    </table>
+</div>
+{% endblock BODY %}
