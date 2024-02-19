@@ -91,6 +91,8 @@ DATABASES = {
         'NAME': 'rizz',
         'USER': 'admin',
         'PASSWORD': 'polina2004',
+        'HOST': 'db',
+        'PORT': '5432'
     }
 }
 

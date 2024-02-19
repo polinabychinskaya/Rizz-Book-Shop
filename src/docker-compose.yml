@@ -8,11 +8,13 @@ services:
       POSTGRES_USER: 'admin'
       POSTGRES_PASSWORD: 'polina2004'
     volumes:
-      - postgres_data:/var/lib/postgresql/data/ #??
+      - ./postgres_data:/var/lib/postgresql/data/ #??
+    ports:
+      - "5432:5432"
 
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: sh -c 'python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000'
     volumes:
       - .:/code #??
     ports:
